@@ -1,15 +1,15 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
-import { Global } from '@emotion/react';
+import { useState } from "react";
+import { Global } from "@emotion/react";
 
-import ChartGroup from '../chart-group';
-import ChartProfit from '../chart/chart-profit';
-import ChartValuation from '../chart/chart-valuation';
-import Form from '../form';
-import Table from '../table';
-import TableGroup from '../table-group';
-import { useNISAData } from '../../hooks/use-nisa-data';
-import * as styles from './styles';
+import ChartGroup from "../chart-group";
+import ChartProfit from "../chart/chart-profit";
+import ChartValuation from "../chart/chart-valuation";
+import Form from "../form";
+import Table from "../table";
+import TableGroup from "../table-group";
+import { useNISAData } from "../../hooks/use-nisa-data";
+import * as styles from "./styles";
 
 export default function App() {
   const [annualInvestment, setAnnualInvestment] = useState(1_200_000);

@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from '@emotion/react';
+import { css } from "@emotion/react";
 
-import { MAX_CONTENT_WIDTH } from '../variables';
+import { MAX_CONTENT_WIDTH } from "../variables";
 
 const MARGIN = 20;
 

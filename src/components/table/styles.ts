@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import { css } from "@emotion/react";
 
-import * as COLORS from '../../colors';
+import * as COLORS from "../../colors";
 
 export const table = css`
   border-collapse: collapse;
@@ -36,7 +36,7 @@ export const thead = (slug) => css`
 `;
 
 export const tbody = (slug) => css`
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 
   th {
     border-right: 1px solid hsla(0, 0%, 100%, 40%);

@@ -1,11 +1,11 @@
-import { defaults, Line } from 'react-chartjs-2';
+import { defaults, Line } from "react-chartjs-2";
 
-import * as config from './config';
-import * as COLORS from '../../colors';
+import * as config from "./config";
+import * as COLORS from "../../colors";
 
 defaults.color = config.defaults.color;
 // @ts-ignore
-defaults.font.family = 'Roboto Mono';
+defaults.font.family = "Roboto Mono";
 
 const dataProps = (data, color) => ({
   borderColor: `hsl(${color})`,
@@ -21,17 +21,17 @@ export default function ChartProfit({ data }) {
     labels: data.ippan.map((item) => item.id),
     datasets: [
       {
-        label: 'つみたてNISA',
+        label: "つみたてNISA",
         ...dataProps(data.tsumi, COLORS.tsumi.hsl),
       },
       {
-        label: 'NISA',
+        label: "NISA",
         ...dataProps(data.ippan, COLORS.ippan.hsl),
       },
     ],
   };
 
   return (
-    <Line data={chartData} options={config.options({ title: '評価益' })} />
+    <Line data={chartData} options={config.options({ title: "評価益" })} />
   );
 }

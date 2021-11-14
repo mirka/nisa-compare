@@ -1,11 +1,11 @@
-import type { LegendOptions} from 'chart.js'
-import * as COLORS from '../../colors';
+import type { LegendOptions } from "chart.js";
+import * as COLORS from "../../colors";
 
 export const defaults = {
   color: COLORS.primary.hex,
 };
 
-const legendAlignment: LegendOptions<"line">["align"] = 'end';  
+const legendAlignment: LegendOptions<"line">["align"] = "end";
 
 export const options = ({ title, legendFilter = (legend) => legend }) => ({
   aspectRatio: 1.2,

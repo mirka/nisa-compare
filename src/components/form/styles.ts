@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import { css } from "@emotion/react";
 
-import * as COLORS from '../../colors';
+import * as COLORS from "../../colors";
 
 const FLEX_GAP = 16;
 const BP_MOBILE = 550;
@@ -64,7 +64,7 @@ export const checkbox = css`
   font-size: ${12 / 16}rem;
   margin-top: 8px;
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     margin: 0 4px 0 0;
   }
 `;

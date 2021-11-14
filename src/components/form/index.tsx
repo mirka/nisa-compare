@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-import * as styles from './styles';
+import * as styles from "./styles";
 
 export default function Form({ setAnnualInvestment, setIsNewNISA, setROI }) {
   const [isNewNISA, _setIsNewNISA] = useState(false);

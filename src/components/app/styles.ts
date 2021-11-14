@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import { css } from "@emotion/react";
 
-import * as COLORS from '../../colors';
-import { MAX_CONTENT_WIDTH } from '../../variables';
+import * as COLORS from "../../colors";
+import { MAX_CONTENT_WIDTH } from "../../variables";
 
 export const global = css``;
 
@@ -11,9 +11,9 @@ export const app = css`
 
   padding: 0 var(--content-padding);
 
-  font-family: 'Roboto Mono', Haettenschweiler, 'Arial Narrow Bold', sans-serif,
-    -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: "Roboto Mono", Haettenschweiler, "Arial Narrow Bold", sans-serif,
+    -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
   @media (min-width: 450px) {
     --content-padding: 40px;
@@ -67,7 +67,7 @@ export const slash = css`
   transform: rotate(20deg);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     background: pink;

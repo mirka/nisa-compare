@@ -1,15 +1,15 @@
 /** @jsxImportSource @emotion/react */
 
-import type { NISAData } from '../../hooks/use-nisa-data';
-import * as styles from './styles';
+import type { NISAData } from "../../hooks/use-nisa-data";
+import * as styles from "./styles";
 
 type Props = {
   data: NISAData[];
   title: string;
-  slug: 'ippan' | 'tsumi';
+  slug: "ippan" | "tsumi";
 };
 
-const jpy = new Intl.NumberFormat('ja-JP', { maximumFractionDigits: 0 });
+const jpy = new Intl.NumberFormat("ja-JP", { maximumFractionDigits: 0 });
 
 export default function Table({ data, slug, title }: Props) {
   return (
