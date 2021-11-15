@@ -5,20 +5,20 @@ import { useForm } from "react-hook-form";
 
 import * as styles from "./styles";
 
-export default function Form({ setAnnualInvestment, setIsNewNISA, setROI }) {
+export default function Form({ setAnnualDeposit, setIsNewNISA, setROI }) {
   const [isNewNISA, _setIsNewNISA] = useState(false);
   const getMaxInvestment = (isNewNISA) => (isNewNISA ? 122 : 120);
   const maxInvestment = getMaxInvestment(isNewNISA);
 
   const { register, setValue, handleSubmit, reset } = useForm({
     defaultValues: {
-      annualInvestment: maxInvestment,
+      annualDeposit: maxInvestment,
       isNewNISA: false,
       roi: 5,
     },
   });
-  const onSubmit = ({ annualInvestment, isNewNISA, roi }) => {
-    setAnnualInvestment(annualInvestment * 10000);
+  const onSubmit = ({ annualDeposit, isNewNISA, roi }) => {
+    setAnnualDeposit(annualDeposit * 10000);
     setROI(roi / 100);
     setIsNewNISA(isNewNISA);
   };
@@ -40,7 +40,7 @@ export default function Form({ setAnnualInvestment, setIsNewNISA, setROI }) {
                 pattern="[0-9]*"
                 min={40}
                 max={maxInvestment}
-                {...register('annualInvestment', {
+                {...register("annualDeposit", {
                   required: true,
                   min: 40,
                   max: maxInvestment,
@@ -52,11 +52,11 @@ export default function Form({ setAnnualInvestment, setIsNewNISA, setROI }) {
           <label css={styles.checkbox}>
             <input
               type="checkbox"
-              {...register('isNewNISA', {
+              {...register("isNewNISA", {
                 onChange: (event) => {
                   const newValue = event.target.checked;
                   _setIsNewNISA(newValue);
-                  setValue('annualInvestment', getMaxInvestment(newValue));
+                  setValue("annualDeposit", getMaxInvestment(newValue));
                 },
               })}
             />
@@ -66,7 +66,7 @@ export default function Form({ setAnnualInvestment, setIsNewNISA, setROI }) {
 
         <div css={styles.column}>
           <label css={styles.label} htmlFor="roi">
-            ROI（年率）
+            リターン（年率）
           </label>
           <div css={styles.inputWithUnit}>
             <input
@@ -77,7 +77,7 @@ export default function Form({ setAnnualInvestment, setIsNewNISA, setROI }) {
               pattern="[0-9]*"
               min={0}
               max={50}
-              {...register('roi', { required: true, min: 0, max: 50 })}
+              {...register("roi", { required: true, min: 0, max: 50 })}
             />
             %
           </div>

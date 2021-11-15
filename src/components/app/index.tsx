@@ -12,20 +12,22 @@ import { useNISAData } from "../../hooks/use-nisa-data";
 import * as styles from "./styles";
 
 export default function App() {
-  const [annualInvestment, setAnnualInvestment] = useState(1_200_000);
+  const [annualDeposit, setAnnualDeposit] = useState(1_200_000);
   const [roi, setROI] = useState(0.05);
   const [isNewNISA, setIsNewNISA] = useState(false);
 
   const data = {
     ippan: useNISAData({
-      annualInvestment,
+      annualDeposit,
+      annualDepositMax: isNewNISA ? 1_220_000 : 1_200_000,
       annualROI: roi,
-      maxInvestment: (isNewNISA ? 122 : 120) * 5 * 10000,
+      depositableYears: 5,
     }),
     tsumi: useNISAData({
-      annualInvestment: 400_000,
+      annualDeposit: 400_000,
+      annualDepositMax: 400_000,
       annualROI: roi,
-      maxInvestment: 8_000_000,
+      depositableYears: 20,
     }),
   };
 
@@ -39,7 +41,7 @@ export default function App() {
           比較計算
         </h1>
         <Form
-          setAnnualInvestment={setAnnualInvestment}
+          setAnnualDeposit={setAnnualDeposit}
           setIsNewNISA={setIsNewNISA}
           setROI={setROI}
         />

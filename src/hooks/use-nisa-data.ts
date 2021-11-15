@@ -2,51 +2,63 @@ import { useMemo } from "react";
 
 export type NISAData = {
   id: number;
-  investedAmount: number;
-  valuation: number;
-  roi: number;
+  cumulativeDeposit: number;
+  /** Amount newly deposited into the account. */
+  deposit: number;
+  /** Value of investment at the start of the year. */
+  invested: number;
+  /** Cumulative profit. */
   profit: number;
+  /** Return on investment for the year. */
+  roi: number;
+  /** Amount that will roll over into the next term, before any returns. */
+  rollover: number;
+  /** Value of investment at the end of the year. */
+  valuation: number;
 };
 
 export const useNISAData = ({
-  annualInvestment,
+  annualDeposit,
+  annualDepositMax,
   annualROI,
-  maxInvestment,
+  depositableYears,
   years = 20,
 }): NISAData[] => {
-  const { data } = useMemo(
-    () =>
-      Array(years)
-        .fill(1)
-        .map((val, i) => val + i)
-        .reduce(
-          ({ data, accumulatedROI }, year, i) => {
-            const investedAmount = Math.min(
-              annualInvestment * year,
-              maxInvestment,
-            );
-            const initialValuation = investedAmount + accumulatedROI;
-            const roi = initialValuation * annualROI;
-            const finalValuation = initialValuation + roi;
+  return Array(years)
+    .fill(null)
+    .reduce((acc, _, index) => {
+      const year = index + 1;
 
-            return {
-              data: [
-                ...data,
-                {
-                  id: year,
-                  investedAmount,
-                  valuation: finalValuation,
-                  roi,
-                  profit: finalValuation - investedAmount,
-                },
-              ],
-              accumulatedROI: accumulatedROI + roi,
-            };
-          },
-          { data: [], accumulatedROI: 0 },
-        ),
-    [annualInvestment, annualROI, maxInvestment, years],
-  );
+      const rolloverBaseYear = acc[index - depositableYears];
+      const rolloverBase =
+        (rolloverBaseYear?.rollover ?? 0) *
+        Math.pow(1 + annualROI, depositableYears);
 
-  return data;
+      const deposit = Math.max(
+        Math.min(annualDepositMax - rolloverBase, annualDeposit),
+        0
+      );
+
+      const previousYear = acc[index - 1];
+      const previousYearValuation = previousYear?.valuation ?? 0;
+      const invested = previousYearValuation + deposit;
+      const roi = invested * annualROI;
+      const valuation = invested + roi;
+      const cumulativeDeposit =
+        (previousYear?.cumulativeDeposit ?? 0) + deposit;
+
+      return [
+        ...acc,
+        {
+          id: year,
+          cumulativeDeposit,
+          deposit,
+          invested,
+          profit: valuation - cumulativeDeposit,
+          roi,
+          rollover: rolloverBase + deposit,
+          valuation,
+        },
+      ];
+    }, []);
 };

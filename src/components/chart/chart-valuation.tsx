@@ -24,7 +24,7 @@ const investedAmountDataProps = (data, color) => ({
   borderDash: [4, 2],
   borderWidth: 1,
   pointRadius: 0,
-  data: data.map((item) => item.investedAmount),
+  data: data.map((item) => item.cumulativeDeposit),
 });
 
 export default function ChartValuation({ data }) {
