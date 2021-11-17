@@ -4,8 +4,6 @@ import { css } from "@emotion/react";
 import * as COLORS from "../../colors";
 import { MAX_CONTENT_WIDTH } from "../../variables";
 
-export const global = css``;
-
 export const app = css`
   --content-padding: 16px;
 

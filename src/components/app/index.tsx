@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
-import { Global } from "@emotion/react";
 
 import ChartGroup from "../chart-group";
 import ChartProfit from "../chart/chart-profit";
@@ -33,7 +32,6 @@ export default function App() {
 
   return (
     <div css={styles.app}>
-      <Global styles={styles.global} />
       <header css={styles.header}>
         <h1 css={styles.h1}>
           NISA <span css={styles.slash} aria-label="VS" /> つみたてNISA
