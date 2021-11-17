@@ -19,9 +19,9 @@ export default function Table({ data, slug, title }: Props) {
       <thead css={styles.thead(slug)}>
         <tr>
           <th>年目</th>
+          <th css={styles.optionalColumn}>買付額</th>
           <th>累積買付額</th>
           <th>評価額</th>
-          <th css={styles.optionalColumn}>リターン</th>
           <th>評価益</th>
         </tr>
       </thead>
@@ -30,9 +30,9 @@ export default function Table({ data, slug, title }: Props) {
         {data.map((item) => (
           <tr key={item.id}>
             <th scope="row">{item.id}</th>
+            <td css={styles.optionalColumn}>{jpy.format(item.deposit)}</td>
             <td>{jpy.format(item.cumulativeDeposit)}</td>
             <td>{jpy.format(item.valuation)}</td>
-            <td css={styles.optionalColumn}>{jpy.format(item.roi)}</td>
             <td css={styles.tdHighlight(slug)}>{jpy.format(item.profit)}</td>
           </tr>
         ))}
