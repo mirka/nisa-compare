@@ -83,3 +83,14 @@ export const slash = css`
     }
   }
 `;
+
+export const footer = css`
+  max-width: ${MAX_CONTENT_WIDTH + 32 * 2}px;
+  margin: 40px auto;
+  font-size: ${12 / 16}rem;
+  text-align: right;
+
+  a {
+    color: hsl(${COLORS.ippan.hsl});
+  }
+`;

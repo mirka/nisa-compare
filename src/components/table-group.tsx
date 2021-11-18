@@ -5,12 +5,12 @@ import { css } from "@emotion/react";
 import { MAX_CONTENT_WIDTH } from "../variables";
 
 const wrapper = css`
-  margin: 28px calc(var(--content-padding) * -1);
+  margin: 28px calc(var(--content-padding) * -1) 0;
   padding: 28px 16px;
   background: hsl(0, 0%, 18%);
 
   @media (min-width: 500px) {
-    margin: 60px auto;
+    margin: 60px auto 0;
     padding: 32px;
     max-width: ${MAX_CONTENT_WIDTH}px;
     border-radius: 8px;

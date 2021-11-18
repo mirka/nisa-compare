@@ -58,6 +58,11 @@ export default function App() {
         <Table data={data.ippan} title="NISA" slug="ippan" />
         <Table data={data.tsumi} title="つみたてNISA" slug="tsumi" />
       </TableGroup>
+
+      <footer css={styles.footer}>
+        <a href="https://jaguchi.com/blog/2021/11/nisa-compare/">About</a> |{" "}
+        <a href="https://github.com/mirka/nisa-compare">GitHub</a>
+      </footer>
     </div>
   );
 }
